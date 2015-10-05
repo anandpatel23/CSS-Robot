@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-
+<html>
 <head>
 <link href='https://fonts.googleapis.com/css?family=Poller+One' rel='stylesheet' type='text/css'>
 <script src="/assets/jquery.js"></script>
-<style>
+<script>
+// on eyes button click, toggle laser class on brain
+	$(".flash").click(function(){
+		$(".brain").toggleClass('laser');
+	});
 
+// on color button click
+$(".color").click(function(){
+	//assign color values
+	var red = Math.floor(Math.random() * 255);
+	var green = Math.floor(Math.random() * 255);
+	var blue = Math.floor(Math.random() * 255);
+
+	// generate RGBA value
+	var randomRGBA = 'rgba('+red+', '+green+', '+blue+', 1)';
+
+	// change body's bg to randomRGBA
+	$("body").css("background", randomRGBA);
+
+	alert(randomRGBA);
+});
+</script>
+
+<style>
 .robot {
   position: relative;
   left: 200px;
@@ -35,11 +57,13 @@
     background: -moz-radial-gradient(circle, red 15%, transparent 40%), #cc5;
   }
 }
+
 .laser {
   animation: blink .5s infinite;
   -webkit-animation: blink .5s infinite;
   -moz-animation: blink .5s infinite;
 }
+
 .brain {
   background: radial-gradient(circle, white 15%, transparent 40%), #cc5;
   background: -moz-radial-gradient(circle, white 15%, transparent 40%), #cc5; 
@@ -52,6 +76,7 @@
   position: relative;
   left: 70px;
 }
+
 .torso {
   height: 0;
   width: 140px;
@@ -60,6 +85,7 @@
   border-right: 75px solid transparent;
   border-radius: 20px 20px 100px 100px;
 }
+
 .left {
   font-family: 'Poller One', verdana, arial, sans-serif;
   font-weight: bold;
@@ -73,6 +99,7 @@
   left: -190px;
   z-index: -1;
 }
+
 .right {
   font-family: 'Poller One', verdana, arial, sans-serif;
   font-weight: bold;
@@ -86,6 +113,7 @@
   left: 190px;
   z-index: -1;
 }
+
 .foot {
   height: 40px;
   width: 40px;
@@ -97,21 +125,25 @@
   top: -10px;
   z-index: -1;
 }
+
 @keyframes dance {
  from {
   left: 800px;
  }
 }
+
 @-webkit-keyframes dance {
  from {
   left: 800px;
  }
 }
+
 @-moz-keyframes dance {
  from {
   left: 800px;
  }
 }
+
 img {
   animation: dance 4s infinite;
   -webkit-animation: dance 4s infinite;
@@ -126,13 +158,13 @@ img {
 <body>
 
 <div class="robot">
-  <div class="beep"></div>
-  <div class="brain"></div>
-  <div class="torso">
-    <div class="left">j</div>
-    <div class="right">j</div>
-  </div>
-  <div class="foot"></div>
+	<div class="beep"></div>
+	<div class="brain"></div>
+	<div class="torso">
+    		<div class="left">j</div>
+		<div class="right">j</div>
+  	</div>
+  	<div class="foot"></div>
 </div>
 
 <button class="flash">laser eyes on/off</button>
@@ -140,30 +172,5 @@ img {
 <button class="moves">dance</button>
 
 <img src="dance_cotter.gif">
-<script>
-// When eyes button is clicked, toggle laser class on brain
-$(".flash").click(function() {
-  $(".brain").toggleClass('laser');
-});
-
-// When color button is clicked...
-$(".color").click(function() {
-  // assign each named color a random number 0-255
-  var red = Math.floor(Math.random() * 255);
-  var green = Math.floor(Math.random() * 255);
-  var blue = Math.floor(Math.random() * 255);
-  
-  //Generte an RGBA value from red, green, and blue
-  var randomRGBA = 'rgba('+red+','+green+','+blue+',1)';
-  
-  //and change the body's background to our random color
-  $("body").css("background", randomRGBA);
-  //Display the RGBA value in an alert window
-  alert(randomRGBA);
-});
-
-$(".movese").click(function() {
-  $("img").toggle();
-});
-</script>
 </body>
+</html>
